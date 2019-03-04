@@ -1,6 +1,6 @@
 import * as chai from 'chai'
 import chaiHttp = require('chai-http')
-import server from '../src/index'
+import server from '../src/db/index'
 
 chai.use(chaiHttp)
 const should = chai.should()

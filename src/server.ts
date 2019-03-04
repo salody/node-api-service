@@ -1,23 +1,19 @@
+import "reflect-metadata";
 import * as Koa from 'koa'
-import * as Router from 'koa-router'
+import * as bodyParser from 'koa-bodyparser'
+
+import indexRoutes from './routes/index'
+import movieRoutes from'./routes/movies'
 
 const app = new Koa()
-// middleware
-app.use(async (ctx, next) => {
-	// log the request to console
-	console.log('Url:', ctx.url)
-	// pass the request to the next middleware function
-	await next()
+const PORT = process.env.PORT || 3000
+
+app.use(bodyParser())
+app.use(indexRoutes.routes())
+app.use(movieRoutes.routes())
+
+const server = app.listen(PORT, () => {
+	console.log(`Server listening on port ${PORT}`)
 })
 
-
-const router = new Router()
-
-router.get('/*', async (ctx) => {
-	ctx.body = 'Hello World!'
-})
-
-app.use(router.routes())
-
-app.listen(3000)
-
+export default server

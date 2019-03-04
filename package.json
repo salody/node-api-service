@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --watch 'src/**/*' -e ts,tsx --exec ts-node ./src/index.ts",
+    "typeorm": "ts-node src/db/index.ts",
     "test": "mocha -r ts-node/register test/**/*",
     "watch-server": "nodemon --watch 'src/**/*' -e ts,tsx --exec ts-node ./src/server.ts"
   },
